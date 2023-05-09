@@ -233,10 +233,12 @@ if __name__ == '__main__':
 
             for i in range(2):  # Repeat this control two times
                 await self.light.set_color(Color.green)
-                await self.motor.ramp_speed(direction * 80, 5000)  # Ramp speed to x% over y/1000 seconds
+                await self.motor.set_speed(direction * 40) # min speed to prevent lock
+                await self.motor.ramp_speed(direction * 80, 4000)  # Ramp speed to x% over y/1000 seconds
+                await sleep(4)
                 await self.light.set_color(Color.blue)
                 await self.speaker.play_sound(DuploSpeaker.sounds.steam)
-                await self.motor.ramp_speed(direction * 50, 2000)
+                await sleep(1)
                 await self.light.set_color(Color.yellow)
                 await sleep(4)
                 await self.light.set_color(Color.pink)
@@ -246,9 +248,10 @@ if __name__ == '__main__':
                 await self.light.set_color(Color.red)
                 await self.speaker.play_sound(DuploSpeaker.sounds.brake)
                 await self.motor.ramp_speed(0, 1000)  # Brake to 0 over 0.25 second
+                await sleep(1)
                 await self.speaker.play_sound(DuploSpeaker.sounds.station)
                 await self.light.set_color(Color.white)
-                await sleep(8)
+                await sleep(3)
                 direction *= -1
                 
             await self.light.set_color(Color.black)
