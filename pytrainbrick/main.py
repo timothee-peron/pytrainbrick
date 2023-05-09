@@ -223,17 +223,35 @@ if __name__ == '__main__':
     class Train(DuploTrainHub):
 
         async def run(self):
-            await self.light.set_color(Color.red)
+            await self.light.set_color(Color.black)
             await self.speaker.activate_updates()
 
+            direction = 1
+            
+            await self.speaker.play_sound(DuploSpeaker.sounds.water)
+            await sleep(2) # n  seconds
+
             for i in range(2):  # Repeat this control two times
-                await self.motor.ramp_speed(-70, 500)  # Ramp speed to x% over 0.5 seconds
-                await sleep(2)
+                await self.light.set_color(Color.green)
+                await self.motor.ramp_speed(direction * 80, 5000)  # Ramp speed to x% over y/1000 seconds
+                await self.light.set_color(Color.blue)
+                await self.speaker.play_sound(DuploSpeaker.sounds.steam)
+                await self.motor.ramp_speed(direction * 50, 2000)
+                await self.light.set_color(Color.yellow)
+                await sleep(4)
+                await self.light.set_color(Color.pink)
                 await self.speaker.play_sound(DuploSpeaker.sounds.horn)
-                await sleep(2)
+                await self.light.set_color(Color.yellow)
+                await sleep(4)
+                await self.light.set_color(Color.red)
                 await self.speaker.play_sound(DuploSpeaker.sounds.brake)
-                await self.motor.ramp_speed(0, 250)  # Brake to 0 over 0.25 second
-                await sleep(1)
+                await self.motor.ramp_speed(0, 1000)  # Brake to 0 over 0.25 second
+                await self.speaker.play_sound(DuploSpeaker.sounds.station)
+                await self.light.set_color(Color.white)
+                await sleep(8)
+                direction *= -1
+                
+            await self.light.set_color(Color.black)
 
 
     async def system():
