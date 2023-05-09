@@ -22,7 +22,7 @@ pip install -r requirements.txt
 python pytrainbrick\main.py
 ```
 
-Now power on the lego duplo train on a *circular track*. In order to connect, the train LED must be blinking.
+Now power on the lego duplo train on a **circular track**. In order to connect, the train LED must be blinking.
 
 The included demo has the following features:
   - color change
