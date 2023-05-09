@@ -22,4 +22,10 @@ pip install -r requirements.txt
 python pytrainbrick\main.py
 ```
 
-Now power on the lego duplo train on a circular track. Its led color should change to red. It will perform some accelerations and stops. Some sounds will be played. Unlike using official app to control the train, the train motor will not stop if it encounters resistance.
+Now power on the lego duplo train on a *circular track*. In order to connect, the train LED must be blinking.
+
+The included demo has the following features:
+  - color change
+  - acceleration, stops, reverse
+  - sounds
+Unlike using official app to control the train, the train motor will not stop if it encounters resistance.
