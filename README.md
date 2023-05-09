@@ -28,4 +28,5 @@ The included demo has the following features:
   - color change
   - acceleration, stops, reverse
   - sounds
+
 Unlike using official app to control the train, the train motor will not stop if it encounters resistance.
